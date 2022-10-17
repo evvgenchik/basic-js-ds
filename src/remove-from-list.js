@@ -42,8 +42,28 @@ function removeKFromList(l, k) {
 
 
 
+
+	let currentNode = l
+	let previous = null
+
+	while (l) {
+		if (l.value === k) {
+			if (previous === null) {
+				currentNode = l = l.next
+				continue
+			} else {
+				previous.next = l.next
+				l = l.next
+				continue
+			}
+		}
+		previous = l
+		l = l.next
+	}
+	return currentNode
 }
-removeKFromList([3, 1, 2, 3, 4, 5], 3)
+
+// removeKFromList([3, 1, 2, 3, 4, 5], 3)
 
 
 module.exports = {
